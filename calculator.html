@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator - GradeRocket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 8 L26 28 L20 24 L14 28 Z" fill="currentColor"/>
+                </svg>
+                <span>GradeRocket</span>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="calculator.html" class="active">Calculator</a>
+                <a href="tasks.html">Tasks</a>
+                <a href="quiz.html">Quizzes</a>
+                <a href="game.html">Game</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <a href="signin.html" class="btn btn-outline">Sign In</a>
+            </div>
+            
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="calculator.html" class="active">Calculator</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="quiz.html">Quizzes</a>
+        <a href="game.html">Game</a>
+        <a href="contact.html">Contact</a>
+        <a href="signin.html">Sign In</a>
+    </div>
+
+    <!-- Fireworks Container -->
+    <div class="fireworks-container" id="fireworksContainer"></div>
+
+    <!-- Main Content -->
+    <main class="calculator-page">
+        <div class="calculator-container">
+            <!-- Results Panel -->
+            <aside class="results-panel">
+                <div class="gpa-card">
+                    <div class="gpa-header">
+                        <h2>Your GPA</h2>
+                        <span class="gpa-badge" id="gpaBadge">-</span>
+                    </div>
+                    
+                    <div class="gpa-display">
+                        <div class="gpa-circle" id="gpaCircle">
+                            <svg viewBox="0 0 200 200">
+                                <circle class="gpa-circle-bg" cx="100" cy="100" r="90" fill="none" stroke-width="12"/>
+                                <circle class="gpa-circle-progress" id="gpaProgress" cx="100" cy="100" r="90" fill="none" stroke-width="12" stroke-dasharray="565.48" stroke-dashoffset="565.48"/>
+                            </svg>
+                            <div class="gpa-value-container">
+                                <span class="gpa-value" id="gpaValue">0.00</span>
+                                <span class="gpa-max">/ 4.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gpa-stats">
+                        <div class="gpa-stat">
+                            <span class="stat-label">Total Absolutes</span>
+                            <span class="stat-value" id="totalAbsolutes">0.00</span>
+                        </div>
+                        <div class="gpa-stat">
+                            <span class="stat-label">Class Average</span>
+                            <span class="stat-value" id="avgAbsolute">0.00</span>
+                        </div>
+                        <div class="gpa-stat">
+                            <span class="stat-label">Difference</span>
+                            <span class="stat-value" id="compareAbsolute">0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-block calculate-btn" onclick="calculateGPA()">
+                        <span class="btn-text">Calculate GPA</span>
+                        <div class="rocket-animation" id="rocketAnimation">
+                            <svg viewBox="0 0 60 80" fill="none">
+                                <path d="M30 5 C40 5 50 25 50 45 L50 65 C50 70 45 75 30 75 C15 75 10 70 10 65 L10 45 C10 25 20 5 30 5Z" fill="url(#btnRocketGrad)"/>
+                                <circle cx="30" cy="35" r="8" fill="#1e293b"/>
+                                <path d="M10 55 L2 75 L10 70 Z" fill="url(#btnRocketGrad)"/>
+                                <path d="M50 55 L58 75 L50 70 Z" fill="url(#btnRocketGrad)"/>
+                                <g class="btn-flame">
+                                    <ellipse cx="30" cy="82" rx="8" ry="15" fill="#f59e0b"/>
+                                    <ellipse cx="30" cy="80" rx="5" ry="10" fill="#fbbf24"/>
+                                </g>
+                                <defs>
+                                    <linearGradient id="btnRocketGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#667eea"/>
+                                        <stop offset="100%" style="stop-color:#764ba2"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+                
+                <!-- Suggestions -->
+                <div class="suggestions-card" id="suggestionsCard">
+                    <h3>Performance Tips</h3>
+                    <div id="suggestionsContainer">
+                        <p class="no-suggestions">Add grades to see personalized tips!</p>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Subjects Section -->
+            <section class="subjects-section">
+                <div class="section-header">
+                    <h1>GPA Calculator</h1>
+                    <p>Track your academic performance with precision</p>
+                </div>
+                
+                <div class="subjects-list" id="subjectsSection">
+                    <!-- Subjects will be rendered here -->
+                </div>
+                
+                <!-- Add Subject Form -->
+                <div class="add-subject-card">
+                    <h3>Add Custom Subject</h3>
+                    <div class="add-subject-form">
+                        <div class="form-group">
+                            <label class="form-label">Subject Name</label>
+                            <input type="text" class="form-input" id="newSubjectName" placeholder="e.g., Database Management">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Credits</label>
+                            <input type="number" class="form-input" id="newSubjectCredits" placeholder="3" min="1" max="6">
+                        </div>
+                        <button class="btn btn-primary" onclick="addCustomSubject()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            Add Subject
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="calculator.js"></script>
+</body>
+</html>

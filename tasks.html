@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Scheduler - GradeRocket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tasks.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 8 L26 28 L20 24 L14 28 Z" fill="currentColor"/>
+                </svg>
+                <span>GradeRocket</span>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="tasks.html" class="active">Tasks</a>
+                <a href="quiz.html">Quizzes</a>
+                <a href="game.html">Game</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <a href="signin.html" class="btn btn-outline">Sign In</a>
+            </div>
+            
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="tasks.html" class="active">Tasks</a>
+        <a href="quiz.html">Quizzes</a>
+        <a href="game.html">Game</a>
+        <a href="contact.html">Contact</a>
+        <a href="signin.html">Sign In</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="tasks-page">
+        <div class="container">
+            <div class="tasks-header">
+                <div>
+                    <h1>Task Scheduler</h1>
+                    <p>Organize your assignments and never miss a deadline</p>
+                </div>
+                <button class="btn btn-primary" onclick="openTaskModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    Add Task
+                </button>
+            </div>
+            
+            <!-- Task Stats -->
+            <div class="task-stats">
+                <div class="task-stat-card">
+                    <div class="stat-icon pending">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="pendingCount">0</span>
+                        <span class="stat-label">Pending</span>
+                    </div>
+                </div>
+                <div class="task-stat-card">
+                    <div class="stat-icon progress">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="progressCount">0</span>
+                        <span class="stat-label">In Progress</span>
+                    </div>
+                </div>
+                <div class="task-stat-card">
+                    <div class="stat-icon completed">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="completedCount">0</span>
+                        <span class="stat-label">Completed</span>
+                    </div>
+                </div>
+                <div class="task-stat-card">
+                    <div class="stat-icon overdue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="overdueCount">0</span>
+                        <span class="stat-label">Overdue</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterTasks('all', this)">All Tasks</button>
+                <button class="filter-tab" onclick="filterTasks('pending', this)">Pending</button>
+                <button class="filter-tab" onclick="filterTasks('in-progress', this)">In Progress</button>
+                <button class="filter-tab" onclick="filterTasks('completed', this)">Completed</button>
+            </div>
+            
+            <!-- Tasks List -->
+            <div class="tasks-list" id="tasksList">
+                <!-- Tasks will be rendered here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Task Modal -->
+    <div class="modal-overlay" id="taskModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Task</h2>
+                <button class="modal-close" onclick="closeTaskModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <form class="modal-form" id="taskForm" onsubmit="saveTask(event)">
+                <input type="hidden" id="taskId">
+                <div class="form-group">
+                    <label class="form-label">Task Title</label>
+                    <input type="text" class="form-input" id="taskTitle" placeholder="e.g., Complete Calculus Assignment" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-input" id="taskDescription" placeholder="Add details about the task..." rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <select class="form-input" id="taskSubject">
+                            <option value="">Select Subject</option>
+                            <option value="Programming Fundamentals">Programming Fundamentals</option>
+                            <option value="Calculus">Calculus</option>
+                            <option value="Applied Physics">Applied Physics</option>
+                            <option value="ICT">ICT</option>
+                            <option value="Pakistan Studies">Pakistan Studies</option>
+                            <option value="English">English</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Priority</label>
+                        <select class="form-input" id="taskPriority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Due Date</label>
+                        <input type="date" class="form-input" id="taskDueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Due Time</label>
+                        <input type="time" class="form-input" id="taskDueTime">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select class="form-input" id="taskStatus">
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeTaskModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="tasks.js"></script>
+</body>
+</html>

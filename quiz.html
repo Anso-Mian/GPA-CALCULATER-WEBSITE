@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - GradeRocket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 8 L26 28 L20 24 L14 28 Z" fill="currentColor"/>
+                </svg>
+                <span>GradeRocket</span>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="tasks.html">Tasks</a>
+                <a href="quiz.html" class="active">Quizzes</a>
+                <a href="game.html">Game</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <a href="signin.html" class="btn btn-outline">Sign In</a>
+            </div>
+            
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="quiz.html" class="active">Quizzes</a>
+        <a href="game.html">Game</a>
+        <a href="contact.html">Contact</a>
+        <a href="signin.html">Sign In</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="quiz-page">
+        <div class="container">
+            <!-- Subject Selection -->
+            <div class="quiz-selection" id="quizSelection">
+                <div class="section-header">
+                    <h1>Subject Quizzes</h1>
+                    <p>Test your knowledge and track your progress</p>
+                </div>
+                
+                <div class="subjects-grid">
+                    <div class="subject-quiz-card" onclick="startQuiz('programming')">
+                        <div class="subject-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m7 8-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/>
+                            </svg>
+                        </div>
+                        <h3>Programming Fundamentals</h3>
+                        <p>C++ basics, loops, functions, arrays</p>
+                        <div class="quiz-meta">
+                            <span>10 Questions</span>
+                            <span>15 mins</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-quiz-card" onclick="startQuiz('calculus')">
+                        <div class="subject-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                <line x1="8" y1="6" x2="16" y2="6"/>
+                                <line x1="8" y1="10" x2="16" y2="10"/>
+                                <line x1="8" y1="14" x2="12" y2="14"/>
+                            </svg>
+                        </div>
+                        <h3>Calculus</h3>
+                        <p>Limits, derivatives, integrals</p>
+                        <div class="quiz-meta">
+                            <span>10 Questions</span>
+                            <span>20 mins</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-quiz-card" onclick="startQuiz('physics')">
+                        <div class="subject-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="2"/>
+                                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(45 12 12)"/>
+                                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-45 12 12)"/>
+                            </svg>
+                        </div>
+                        <h3>Applied Physics</h3>
+                        <p>Mechanics, waves, thermodynamics</p>
+                        <div class="quiz-meta">
+                            <span>10 Questions</span>
+                            <span>15 mins</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-quiz-card" onclick="startQuiz('ict')">
+                        <div class="subject-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <h3>ICT</h3>
+                        <p>Computer basics, networking, software</p>
+                        <div class="quiz-meta">
+                            <span>10 Questions</span>
+                            <span>10 mins</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-quiz-card" onclick="startQuiz('pakistan')">
+                        <div class="subject-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            </svg>
+                        </div>
+                        <h3>Pakistan Studies</h3>
+                        <p>History, geography, constitution</p>
+                        <div class="quiz-meta">
+                            <span>10 Questions</span>
+                            <span>15 mins</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-quiz-card" onclick="startQuiz('english')">
+                        <div class="subject-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                            </svg>
+                        </div>
+                        <h3>Functional English</h3>
+                        <p>Grammar, vocabulary, comprehension</p>
+                        <div class="quiz-meta">
+                            <span>10 Questions</span>
+                            <span>15 mins</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quiz Interface -->
+            <div class="quiz-interface" id="quizInterface" style="display: none;">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <h2 id="quizTitle">Programming Fundamentals</h2>
+                        <div class="quiz-progress">
+                            <span id="questionNumber">Question 1 of 10</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill" style="width: 10%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quiz-timer" id="quizTimer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <span id="timerDisplay">15:00</span>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <p class="question-text" id="questionText">What is the correct syntax for a for loop in C++?</p>
+                    
+                    <div class="options-list" id="optionsList">
+                        <!-- Options will be rendered here -->
+                    </div>
+                </div>
+                
+                <div class="quiz-actions">
+                    <button class="btn btn-outline" id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+            
+            <!-- Quiz Results -->
+            <div class="quiz-results" id="quizResults" style="display: none;">
+                <div class="results-card">
+                    <div class="results-icon" id="resultsIcon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                            <path d="M4 22h16"/>
+                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                        </svg>
+                    </div>
+                    <h2>Quiz Complete!</h2>
+                    <div class="score-display">
+                        <span class="score-value" id="scoreValue">8</span>
+                        <span class="score-total">/ 10</span>
+                    </div>
+                    <p class="score-percentage" id="scorePercentage">80% Correct</p>
+                    <p class="score-message" id="scoreMessage">Great job! You have a solid understanding of the material.</p>
+                    
+                    <div class="results-actions">
+                        <button class="btn btn-outline" onclick="reviewAnswers()">Review Answers</button>
+                        <button class="btn btn-primary" onclick="retakeQuiz()">Retake Quiz</button>
+                        <button class="btn btn-ghost" onclick="backToSubjects()">Back to Subjects</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>

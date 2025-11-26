@@ -1,0 +1,644 @@
+/* ===== Calculator Page Styles ===== */
+.calculator-page {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.calculator-container {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Results Panel */
+.results-panel {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.gpa-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+}
+
+.gpa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.gpa-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.gpa-badge {
+    padding: 6px 12px;
+    background: var(--primary);
+    color: white;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.gpa-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.gpa-circle {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.gpa-circle svg {
+    transform: rotate(-90deg);
+}
+
+.gpa-circle-bg {
+    stroke: var(--border);
+}
+
+.gpa-circle-progress {
+    stroke: url(#gpaGradient);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.gpa-value-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gpa-value {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.gpa-max {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.gpa-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.gpa-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: var(--surface-elevated);
+    border-radius: var(--radius-md);
+}
+
+.gpa-stat .stat-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.gpa-stat .stat-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Calculate Button with Rocket Animation */
+.calculate-btn {
+    position: relative;
+    overflow: hidden;
+    height: 52px;
+}
+
+.calculate-btn .btn-text {
+    transition: opacity 0.3s ease;
+}
+
+.rocket-animation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 60px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.rocket-animation svg {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-flame {
+    animation: btnFlicker 0.15s ease-in-out infinite alternate;
+}
+
+@keyframes btnFlicker {
+    0% { transform: scaleY(1) scaleX(1); }
+    100% { transform: scaleY(1.2) scaleX(0.9); }
+}
+
+.calculate-btn.animating .btn-text {
+    opacity: 0;
+}
+
+.calculate-btn.animating .rocket-animation {
+    opacity: 1;
+    animation: rocketLaunch 1.5s ease-in-out forwards;
+}
+
+@keyframes rocketLaunch {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    30% {
+        transform: translateX(-50%) translateY(10px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-200px);
+        opacity: 0;
+    }
+}
+
+/* Suggestions Card */
+.suggestions-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+}
+
+.suggestions-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.no-suggestions {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 20px;
+    font-size: 14px;
+}
+
+.suggestion-item {
+    padding: 12px;
+    background: var(--surface-elevated);
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+    border-left: 3px solid var(--warning);
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.suggestion-item.good {
+    border-left-color: var(--success);
+}
+
+/* Subjects Section */
+.subjects-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.subjects-section .section-header {
+    margin-bottom: 8px;
+}
+
+.subjects-section .section-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.subjects-section .section-header p {
+    color: var(--text-secondary);
+}
+
+.subjects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Subject Card */
+.subject-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.subject-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.subject-header:hover {
+    background: var(--surface-elevated);
+}
+
+.subject-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.subject-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: var(--radius-md);
+    color: white;
+}
+
+.subject-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.subject-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.subject-credits {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.subject-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.credits-badge {
+    padding: 6px 12px;
+    background: var(--surface-elevated);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.remove-subject-btn {
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.remove-subject-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+}
+
+.remove-subject-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.toggle-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+
+.toggle-icon.active {
+    transform: rotate(180deg);
+}
+
+/* Subject Content */
+.subject-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.subject-content.active {
+    max-height: 5000px;
+}
+
+.subject-inner {
+    padding: 0 24px 24px;
+}
+
+/* Assessment Tabs */
+.assessment-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.assessment-tab {
+    padding: 10px 16px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--surface);
+    transition: var(--transition);
+}
+
+.assessment-tab:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.assessment-tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+/* Assessment Section */
+.assessment-section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.assessment-section.active {
+    display: block;
+}
+
+.assessment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.assessment-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.add-entry-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+/* Entry Items */
+.entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.entry-item {
+    background: var(--surface-elevated);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    border-left: 3px solid var(--primary);
+}
+
+.entry-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.entry-inputs .form-group {
+    margin-bottom: 0;
+}
+
+.entry-inputs .form-label {
+    font-size: 12px;
+}
+
+.entry-inputs .form-input {
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+.calculated-values {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.calc-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+}
+
+.calc-label {
+    color: var(--text-muted);
+}
+
+.calc-value {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.remove-entry-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--error);
+    border: 1px solid var(--error);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    transition: var(--transition);
+}
+
+.remove-entry-btn:hover {
+    background: var(--error);
+    color: white;
+}
+
+/* Stats Display */
+.stats-display {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.stat-item {
+    text-align: center;
+    padding: 12px;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+}
+
+.stat-item .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.stat-item .stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Add Subject Card */
+.add-subject-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.add-subject-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.add-subject-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 16px;
+    align-items: end;
+}
+
+/* Fireworks */
+.fireworks-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: firework 1s ease-out forwards;
+}
+
+@keyframes firework {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.firework-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    animation: particle 1.5s ease-out forwards;
+}
+
+@keyframes particle {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty));
+    }
+}
+
+/* Empty State */
+.empty-entries {
+    text-align: center;
+    padding: 32px;
+    color: var(--text-muted);
+}
+
+.empty-entries svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .calculator-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-panel {
+        position: relative;
+        top: 0;
+        order: -1;
+    }
+    
+    .stats-display {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .calculator-page {
+        padding-top: 80px;
+    }
+    
+    .calculator-container {
+        padding: 16px;
+    }
+    
+    .add-subject-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .entry-inputs {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .calculated-values {
+        grid-template-columns: 1fr;
+    }
+}
