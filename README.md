@@ -192,3 +192,218 @@ Method 1: Direct Download
 <li>Open <code>index.html</code> in your browser</li>
 </ol>
 Method 2: Git Clone
+
+# Clone the repository
+git clone https://github.com/yourusername/graderocket.git
+
+# Navigate to project directory
+cd graderocket
+
+# Open in browser
+open index.html
+
+
+📁 Project Structure
+```
+graderocket/
+│
+├── index.html              # Landing page, hero section
+├── calculator.html         # GPA calculator interface
+├── tasks.html             # Task management system
+├── quiz.html              # Quiz platform
+├── game.html              # Memory game
+├── contact.html           # Contact form & FAQ
+├── signin.html            # Sign-in UI (frontend only)
+│
+├── styles.css             # Global styles, theme system
+├── calculator.css         # Calculator layouts
+├── tasks.css              # Task scheduler styles
+├── quiz.css               # Quiz interface styles
+├── game.css               # Game styles
+├── contact.css            # Contact page styles
+├── auth.css               # Auth pages styles
+│
+├── app.js                 # Theme toggle, navigation
+├── calculator.js          # GPA logic, LocalStorage
+├── tasks.js               # Task CRUD operations
+├── quiz.js                # Quiz engine, timer
+├── game.js                # Memory game logic
+│
+└── README.md              # Documentation
+
+🚀 Deployment Guide (GitHub Pages)
+Prerequisites
+<ul>
+<li>GitHub account</li>
+<li>Git installed locally</li>
+<li>Code pushed to GitHub repository</li>
+</ul>
+
+Step 1: Push Code to GitHub
+# Initialize repository (if not done)
+git init
+
+# Add all files
+git add .
+
+# Commit
+git commit -m "Complete GradeRocket application"
+
+# Add remote
+git remote add origin https://github.com/yourusername/graderocket.git
+
+# Push to main branch
+git push -u origin main
+```
+
+---
+
+### Step 2: Enable GitHub Pages
+
+<ol>
+<li>Go to repository on GitHub</li>
+<li>Click <strong>Settings</strong> tab</li>
+<li>Click <strong>Pages</strong> in left sidebar</li>
+<li>Under <strong>Source</strong>:
+  <ul>
+    <li>Branch: Select <code>main</code> (or <code>master</code>)</li>
+    <li>Folder: Select <code>/ (root)</code></li>
+  </ul>
+</li>
+<li>Click <strong>Save</strong></li>
+<li>Wait 2-3 minutes for deployment</li>
+</ol>
+
+---
+
+### Step 3: Verify Deployment
+
+**Your site will be live at:**
+```
+https://yourusername.github.io/graderocket/
+Check deployment status:
+<ul>
+<li>Green checkmark = Deployed successfully</li>
+<li>Yellow dot = Deployment in progress</li>
+<li>Red X = Deployment failed (check Actions tab)</li>
+</ul>
+
+Step 4: Update README
+Replace yourusername with your actual GitHub username in:
+<ul>
+<li>Live demo link at top of README</li>
+<li>Repository link</li>
+<li>All deployment URLs</li>
+</ul>
+Common Deployment Issues
+<table>
+<tr>
+<th>Problem</th>
+<th>Solution</th>
+</tr>
+<tr>
+<td>404 Error</td>
+<td>Ensure <code>index.html</code> is in root folder</td>
+</tr>
+<tr>
+<td>Blank Page</td>
+<td>Check console for errors, verify file paths are relative</td>
+</tr>
+<tr>
+<td>CSS Not Loading</td>
+<td>Change absolute paths (/styles.css) to relative (styles.css)</td>
+</tr>
+<tr>
+<td>Changes Not Showing</td>
+<td>Clear browser cache or hard refresh (Ctrl+Shift+R)</td>
+</tr>
+<tr>
+<td>Site Not Building</td>
+<td>Check Actions tab for build errors</td>
+</tr>
+</table>
+
+👥 Contributors
+Development Team
+<table>
+<tr>
+<td align="center">
+<strong>Ans Rizwan</strong><br/>
+24F-0779<br/>
+Lead Developer
+</td>
+<td align="center">
+<strong>Suleman Naeem</strong><br/>
+25F-0747<br/>
+JavaScript Developer
+</td>
+<td align="center">
+<strong>Muhammad Talha</strong><br/>
+25F-0592<br/>
+UI/UX Designer
+</td>
+</tr>
+</table>
+Contributions
+<table>
+<tr>
+<th>Member</th>
+<th>Responsibilities</th>
+</tr>
+<tr>
+<td><strong>Ans Rizwan</strong></td>
+<td>Project architecture, GPA calculator implementation, LocalStorage integration, documentation, Git management</td>
+</tr>
+<tr>
+<td><strong>Suleman Naeem</strong></td>
+<td>Quiz module development, task scheduler logic, timer implementation, data validation</td>
+</tr>
+<tr>
+<td><strong>Muhammad Talha</strong></td>
+<td>CSS styling, responsive design, animations, memory game, visual effects</td>
+</tr>
+</table>
+
+Contribution Breakdown
+<table>
+<tr>
+<th>Component</th>
+<th>Primary Developer</th>
+<th>Support</th>
+</tr>
+<tr>
+<td>GPA Calculator</td>
+<td>Ans Rizwan</td>
+<td>Suleman Naeem</td>
+</tr>
+<tr>
+<td>Task Scheduler</td>
+<td>Suleman Naeem</td>
+<td>Ans Rizwan</td>
+</tr>
+<tr>
+<td>Quiz System</td>
+<td>Suleman Naeem</td>
+<td>Muhammad Talha</td>
+</tr>
+<tr>
+<td>Memory Game</td>
+<td>Muhammad Talha</td>
+<td>Ans Rizwan</td>
+</tr>
+<tr>
+<td>Theme System</td>
+<td>Ans Rizwan</td>
+<td>Muhammad Talha</td>
+</tr>
+<tr>
+<td>Responsive CSS</td>
+<td>Muhammad Talha</td>
+<td>All</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>Ans Rizwan</td>
+<td>All</td>
+</tr>
+</table>
