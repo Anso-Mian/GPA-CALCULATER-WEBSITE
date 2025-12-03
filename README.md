@@ -1,4 +1,4 @@
-#GradeRocket 🚀
+# GradeRocket 🚀
 <br>
 A comprehensive web-based GPA calculator and student productivity platform that helps students track their academic performance, manage tasks, take quizzes, and stay organized—all in one place.
 
