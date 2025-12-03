@@ -231,6 +231,7 @@ graderocket/
 │
 └── README.md              # Documentation
 
+```
 🚀 Deployment Guide (GitHub Pages)
 Prerequisites
 <ul>
@@ -254,7 +255,6 @@ git remote add origin https://github.com/yourusername/graderocket.git
 
 # Push to main branch
 git push -u origin main
-```
 
 ---
 
